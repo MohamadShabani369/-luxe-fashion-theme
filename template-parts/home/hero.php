@@ -5,14 +5,14 @@
  */
 declare(strict_types=1);
 if ( ! defined( 'ABSPATH' ) ) exit;
-$hero_image = get_theme_mod( 'luxe_hero_image', 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1920&q=80' );
+$hero_image = get_theme_mod( 'luxe_hero_image', get_template_directory_uri() . '/assets/img/hero.jpg' );
 $hero_eyebrow   = get_theme_mod( 'luxe_hero_eyebrow', 'NEW COLLECTION' );
 $hero_title     = get_theme_mod( 'luxe_hero_title', 'Timeless Elegance for the Modern Woman' );
 $hero_subtitle  = get_theme_mod( 'luxe_hero_subtitle', 'Discover our latest collection of curated fashion pieces designed for the contemporary woman.' );
 $hero_btn1_text = get_theme_mod( 'luxe_hero_btn1_text', 'Shop Now' );
 $hero_btn1_url  = get_theme_mod( 'luxe_hero_btn1_url', home_url( '/shop/' ) );
 $hero_btn2_text = get_theme_mod( 'luxe_hero_btn2_text', 'View Lookbook' );
-$hero_btn2_url  = get_theme_mod( 'luxe_hero_btn2_url', home_url( '/lookbook/' ) );
+$hero_btn2_url  = get_theme_mod( 'luxe_hero_btn2_url', home_url( '/shop/' ) );
 ?>
 <section class="hero-section" style="background-image: url('<?php echo esc_url( $hero_image ); ?>');" aria-label="Hero">
     <div class="hero-overlay"></div>
