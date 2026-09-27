@@ -1,0 +1,26 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Logs
+*.log
+debug.log
+
+# Temp
+*.tmp
+*.bak
+*~
+
+# Node (if any)
+node_modules/
+npm-debug.log*
+
+# Sensitive
+.env
+.env.local

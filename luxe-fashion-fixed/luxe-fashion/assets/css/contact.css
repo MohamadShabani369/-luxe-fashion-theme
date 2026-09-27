@@ -1,0 +1,578 @@
+/* ==========================================================
+   CONTACT PAGE STYLES
+   ========================================================== */
+
+/* ---------- HERO ---------- */
+.contact-hero {
+    padding: 6rem 0 3rem;
+    text-align: center;
+    background: var(--color-bg, #faf8f5);
+}
+
+.contact-eyebrow {
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--color-accent, #c9a87c);
+    margin: 0 0 1.25rem 0;
+}
+
+.contact-hero-title {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(3rem, 6vw, 4rem);
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--color-primary, #1a1a1a);
+    margin: 0 0 1.5rem 0;
+}
+
+.contact-hero-subtitle {
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-muted, #8a8a8a);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ---------- INFO ---------- */
+.contact-info {
+    padding: 4rem 0;
+}
+
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.contact-card {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    border: 1px solid var(--color-border, #e8e4de);
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.contact-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent, #c9a87c);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.contact-card-icon {
+    width: 32px !important;
+    height: 32px !important;
+    height: 32px !important;
+    margin: 0 auto 1.5rem;
+    color: var(--color-accent, #c9a87c);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-card-label {
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-muted, #8a8a8a);
+    margin: 0 0 0.5rem 0;
+}
+
+.contact-card-value {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-primary, #1a1a1a);
+    margin: 0;
+}
+
+/* ---------- FORM ---------- */
+.contact-form-section {
+    padding: 6rem 0;
+    background: #fff;
+}
+
+.contact-form-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contact-form {
+    width: 100%;
+}
+
+.contact-form-group {
+    margin-bottom: 2rem;
+}
+
+.contact-form-label {
+    display: block;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary, #1a1a1a);
+}
+
+.contact-form-input,
+.contact-form-textarea {
+    width: 100%;
+    padding: 1rem 0;
+    border: 0;
+    border-bottom: 1px solid var(--color-border, #e8e4de);
+    background: transparent;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 1rem;
+    color: var(--color-text, #2b2b2b);
+    transition: border-bottom-color 0.3s ease;
+}
+
+.contact-form-input:focus,
+.contact-form-textarea:focus {
+    outline: none;
+    border-bottom-color: var(--color-accent, #c9a87c);
+}
+
+.contact-form-textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.contact-form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: var(--color-primary, #1a1a1a);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form-submit:hover {
+    background: var(--color-muted, #8a8a8a);
+}
+
+/* ---------- MAP ---------- */
+.contact-map {
+    width: 100%;
+    height: 400px;
+    background: #ebe5dd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-map-button {
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-primary, #1a1a1a);
+    background: #ffffff;
+    border: 1px solid var(--color-border, #e8e4de);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-map-button:hover {
+    background: var(--color-bg, #faf8f5);
+    border-color: var(--color-accent, #c9a87c);
+    color: var(--color-accent, #c9a87c);
+}
+
+/* ---------- SOCIAL + HOURS ---------- */
+.contact-social-hours {
+    padding: 6rem 0 !important;
+    background: var(--color-bg, #faf8f5) !important;
+    text-align: center !important;
+}
+
+.contact-social-hours .container {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4rem !important;
+    align-items: start !important;
+    max-width: 900px !important;
+    margin: 0 auto !important;
+    padding: 0 1.5rem !important;
+    width: 100% !important;
+}
+
+.contact-social,
+.contact-hours {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 350px !important;
+}
+
+.contact-social-title,
+.contact-hours-title {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--color-primary, #1a1a1a);
+    margin: 0 0 1.5rem 0;
+}
+
+.contact-social-list {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-social-item {
+    width: 40px;
+    height: 40px;
+}
+
+.contact-social-link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-muted, #8a8a8a);
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+}
+
+.contact-social-link:hover {
+    color: var(--color-accent, #c9a87c);
+}
+
+.contact-hours-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.875rem;
+    color: var(--color-text, #2b2b2b);
+}
+
+.contact-hours-label {
+    font-weight: 500;
+}
+
+.contact-hours-value {
+    font-weight: 400;
+}
+
+/* ---------- CTA (Same as About page) ---------- */
+.contact-cta {
+    padding: 6rem 0;
+    background: var(--color-primary, #1a1a1a);
+    text-align: center;
+}
+
+.contact-cta .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.contact-cta-title {
+    font-family: var(--font-serif, 'Playfair Display', serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: #ffffff;
+    margin: 0 0 1rem 0;
+}
+
+.contact-cta-text {
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0 0 2.5rem 0;
+}
+
+.contact-cta .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.95rem 2.5rem;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--color-accent, #c9a87c);
+    color: var(--color-primary, #1a1a1a);
+    border: 1px solid var(--color-accent, #c9a87c);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.contact-cta .btn:hover {
+    background: transparent;
+    color: var(--color-accent, #c9a87c);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1023px) {
+    .contact-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+    .contact-form-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-social-hours .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .contact-hours-item {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+    }
+    .contact-hero-title {
+        font-size: 2.5rem;
+    }
+    .contact-hero-subtitle {
+        font-size: 1.125rem;
+    }
+}.contact-social-icon { width: 32px !important; height: 32px !important; }
+/* ===== CENTERING FIXES ===== */
+.contact-hero { text-align: center !important; }
+.contact-hero h1,
+.contact-hero h2,
+.contact-hero p { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
+.contact-hero .contact-eyebrow { text-align: center !important; }
+.contact-info-grid { display: grid !important; grid-template-columns: repeat(3,1fr) !important; gap: 2rem !important; max-width: 1200px !important; margin: 0 auto !important; }
+.contact-card { text-align: center !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; padding: 3rem 1.5rem !important; }
+.contact-card svg { width: 32px !important; height: 32px !important; max-width: 32px !important; max-height: 32px !important; margin: 0 auto 1.25rem !important; color: var(--color-accent,#c9a87c) !important; flex-shrink: 0 !important; }
+.contact-form-section { padding: 6rem 0 !important; background: #fff !important; text-align: center !important; }
+.contact-form-section .container { max-width: 1200px !important; margin: 0 auto !important; padding: 0 1.5rem !important; }
+.contact-form-section h2, .contact-form-section .contact-eyebrow { text-align: center !important; margin-left: auto !important; margin-right: auto !important; }
+.contact-form-grid { display: grid !important; grid-template-columns: 1.4fr 1fr !important; gap: 4rem !important; align-items: start !important; text-align: left !important; margin-top: 3rem !important; }
+.contact-map, .contact-map-placeholder, .contact-map-wrapper { aspect-ratio: 4/3 !important; background: #ebe5dd !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; text-align: center !important; padding: 2rem !important; border: 1px solid var(--color-border,#e8e4de) !important; width: 100% !important; max-width: 100% !important; overflow: hidden !important; }
+.contact-form-section hr, .contact-form-section .separator, .contact-form-section .divider { display: none !important; }
+.contact-form-section svg:not(.contact-social-icon) { max-width: 32px !important; max-height: 32px !important; }
+.contact-social-hours, .social-hours, .social-hours-section { padding: 5rem 0 !important; background: var(--color-bg,#faf8f5) !important; }
+.contact-social-hours .container, .social-hours .container { max-width: 1000px !important; margin: 0 auto !important; padding: 0 1.5rem !important; }
+.contact-social-hours-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 4rem !important; text-align: center !important; margin: 0 auto !important; max-width: 800px !important; }
+.contact-social, .contact-social-block, .contact-hours-block { text-align: center !important; display: flex !important; flex-direction: column !important; align-items: center !important; }
+.contact-social h3, .contact-social-block h3, .contact-hours-block h3 { font-family: var(--font-serif,'Playfair Display',serif) !important; font-size: 1.75rem !important; color: var(--color-primary,#1a1a1a) !important; margin: 0 0 1.5rem 0 !important; text-align: center !important; }
+.social-icons { display: flex !important; justify-content: center !important; align-items: center !important; gap: 1.25rem !important; flex-wrap: wrap !important; }
+.social-icons a { display: inline-flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: 44px !important; border-radius: 50% !important; border: 1px solid var(--color-border,#e8e4de) !important; color: var(--color-primary,#1a1a1a) !important; text-decoration: none !important; transition: all 0.3s ease !important; }
+.social-icons a:hover { background: var(--color-accent,#c9a87c) !important; border-color: var(--color-accent,#c9a87c) !important; color: #fff !important; transform: translateY(-2px) !important; }
+.social-icons svg { width: 20px !important; height: 20px !important; max-width: 20px !important; max-height: 20px !important; }
+.store-hours { list-style: none !important; padding: 0 !important; margin: 0 auto !important; text-align: center !important; max-width: 300px !important; }
+.store-hours li { padding: 0.75rem 0 !important; border-bottom: 1px solid var(--color-border,#e8e4de) !important; font-family: var(--font-sans,'Inter',sans-serif) !important; font-size: 0.95rem !important; color: var(--color-text,#2b2b2b) !important; display: flex !important; justify-content: space-between !important; }
+.store-hours li:last-child { border-bottom: 0 !important; }
+.store-hours .day { font-weight: 500 !important; color: var(--color-primary,#1a1a1a) !important; }
+.store-hours .time { color: var(--color-muted,#8a8a8a) !important; }
+.contact-social-icon { width: 24px !important; height: 24px !important; max-width: 24px !important; max-height: 24px !important; }
+@media (max-width:1023px) { .contact-info-grid { grid-template-columns: repeat(2,1fr) !important; } .contact-social-hours-grid { grid-template-columns: 1fr !important; gap: 3rem !important; } }
+@media (max-width:767px) { .contact-info-grid { grid-template-columns: 1fr !important; } .contact-form-section { padding: 4rem 0 !important; } .contact-form-grid { grid-template-columns: 1fr !important; gap: 3rem !important; } }
+
+/* ===== SOCIAL ICONS FIX ===== */
+.social-icons {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 1.25rem !important;
+    flex-wrap: wrap !important;
+}
+
+.social-icons a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    border: 1px solid var(--color-border, #e8e4de) !important;
+    color: var(--color-primary, #1a1a1a) !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+}
+
+.social-icons a:hover {
+    background: var(--color-accent, #c9a87c) !important;
+    border-color: var(--color-accent, #c9a87c) !important;
+    color: #fff !important;
+    transform: translateY(-2px) !important;
+}
+
+.social-icons svg {
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+}
+
+.store-hours {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    text-align: center !important;
+    max-width: 300px !important;
+}
+
+.store-hours li {
+    padding: 0.75rem 0 !important;
+    border-bottom: 1px solid var(--color-border, #e8e4de) !important;
+    font-family: var(--font-sans, 'Inter', sans-serif) !important;
+    font-size: 0.95rem !important;
+    color: var(--color-text, #2b2b2b) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.store-hours li:last-child {
+    border-bottom: 0 !important;
+}
+
+.store-hours .day {
+    font-weight: 500 !important;
+    color: var(--color-primary, #1a1a1a) !important;
+}
+
+.store-hours .time {
+    color: var(--color-muted, #8a8a8a) !important;
+}
+
+@media (max-width: 1023px) {
+    .contact-social-hours-grid {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .social-icons {
+        gap: 1rem !important;
+    }
+    .social-icons a {
+        width: 44px !important;
+        height: 44px !important;
+    }
+    .social-icons svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
+}
+
+/* ===== CENTER THE WHOLE SECTION ===== */
+.contact-social-hours {
+    padding: 6rem 0 !important;
+    background: var(--color-bg, #faf8f5) !important;
+    text-align: center !important;
+}
+
+.contact-social-hours .container {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4rem !important;
+    align-items: start !important;
+    max-width: 900px !important;
+    margin: 0 auto !important;
+    padding: 0 1.5rem !important;
+    width: 100% !important;
+}
+
+.contact-social,
+.contact-hours {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+/* FIX: use actual class .contact-social-hours-grid, not .social-hours-grid */
+.contact-social-hours-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4rem !important;
+    align-items: start !important;
+    justify-items: center !important;
+    margin: 0 auto !important;
+    max-width: 800px !important;
+    text-align: center !important;
+}
+
+.contact-social,
+.contact-hours {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 350px !important;
+}
+
+.store-hours {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 320px !important;
+}
+
+.store-hours li {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    padding: 0.85rem 0 !important;
+    border-bottom: 1px solid var(--color-border, #e8e4de) !important;
+    font-family: var(--font-sans, 'Inter', sans-serif) !important;
+    font-size: 0.9rem !important;
+    white-space: nowrap !important;
+    text-align: left !important;
+}
+
+.store-hours li:last-child {
+    border-bottom: 0 !important;
+}
+
+.store-hours .day {
+    font-weight: 500 !important;
+    color: var(--color-primary, #1a1a1a) !important;
+    flex-shrink: 0 !important;
+}
+
+.store-hours .time {
+    color: var(--color-muted, #8a8a8a) !important;
+    flex-shrink: 0 !important;
+    text-align: right !important;
+}
+
+@media (max-width: 767px) {
+    .social-hours-grid {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+    }
+    .store-hours li {
+        white-space: normal !important;
+    }
+}

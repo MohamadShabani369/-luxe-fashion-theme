@@ -201,3 +201,118 @@ function luxe_ajax_quick_view() : void {
 
 add_action( 'wp_ajax_luxe_quick_view', 'luxe_ajax_quick_view' );
 add_action( 'wp_ajax_nopriv_luxe_quick_view', 'luxe_ajax_quick_view' );
+
+/* --- Filters --- */
+
+function luxe_dequeue_woocommerce_styles() : void {
+    if ( ! class_exists( 'WooCommerce' ) ) {
+        return;
+    }
+    wp_dequeue_style( 'woocommerce-general' );
+    wp_dequeue_style( 'woocommerce-layout' );
+}
+add_action( 'wp_enqueue_scripts', 'luxe_dequeue_woocommerce_styles', 20 );
+
+function luxe_set_products_per_row() : int {
+    return 3;
+}
+add_filter( 'loop_shop_columns', 'luxe_set_products_per_row' );
+
+function luxe_set_products_per_page( int $cols ) : int {
+    return 12;
+}
+add_filter( 'loop_shop_per_page', 'luxe_set_products_per_page' );
+
+/* --- Price filter --- */
+function luxe_filter_by_price( $q ) : void {
+    if ( ! class_exists( 'WooCommerce' ) || ! $q->is_main_query() ) {
+        return;
+    }
+    $min = isset( $_GET['min_price'] ) ? floatval( $_GET['min_price'] ) : 0;
+    $max = isset( $_GET['max_price'] ) ? floatval( $_GET['max_price'] ) : 0;
+    if ( $min > 0 || $max > 0 ) {
+        $meta_query = (array) $q->get( 'meta_query' );
+        $meta_query[] = array(
+            'key'     => '_price',
+            'value'   => array( $min, $max ),
+            'compare' => 'BETWEEN',
+            'type'    => 'NUMERIC',
+        );
+        $q->set( 'meta_query', $meta_query );
+    }
+}
+add_action( 'woocommerce_product_query', 'luxe_filter_by_price' );
+
+/* --- Sale badge % --- */
+function luxe_sale_flash( $html, $post, $product ) : string {
+    if ( ! $product || ! $product->is_on_sale() ) {
+        return $html;
+    }
+    $percent = 0;
+    $regular = floatval( $product->get_regular_price() );
+    $sale    = floatval( $product->get_sale_price() );
+    if ( $regular > 0 ) {
+        $percent = round( ( ( $regular - $sale ) / $regular ) * 100 );
+    }
+    if ( $percent > 0 ) {
+        return '<span class="luxe-sale-badge">-' . esc_html( $percent ) . '%</span>';
+    }
+    return $html;
+}
+add_filter( 'woocommerce_sale_flash', 'luxe_sale_flash', 10, 3 );
+
+/* --- Archive description (category) --- */
+function luxe_archive_description() : void {
+    if ( is_tax( 'product_cat' ) || is_tax( 'product_tag' ) ) {
+        $term = get_queried_object();
+        if ( $term && ! is_wp_error( $term ) ) {
+            echo '<div class="archive-description">';
+            echo '<h2>' . esc_html( $term->name ) . '</h2>';
+            if ( $term->description ) {
+                echo '<p>' . esc_html( $term->description ) . '</p>';
+            }
+            echo '</div>';
+        }
+    }
+}
+/* --- Single product sidebar removal --- */
+function luxe_single_product_remove_sidebar() : void {
+    if ( is_product() ) {
+        remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+    }
+}
+add_action( 'wp', 'luxe_single_product_remove_sidebar', 20 );
+
+/* --- Related products args --- */
+function luxe_related_products_args( $args ) : array {
+    $args['posts_per_page'] = 4;
+    $args['columns'] = 4;
+    return $args;
+}
+add_filter( 'woocommerce_output_related_products_args', 'luxe_related_products_args' );
+
+/* --- Product tabs customization --- */
+function luxe_custom_product_tabs( $tabs ) : array {
+    if ( isset( $tabs['additional_information'] ) ) {
+        $tabs['additional_information']['title'] = __( 'Details', 'luxe-fashion' );
+    }
+    foreach ( $tabs as $key => $tab ) {
+        if ( $key === 'reviews' ) {
+            $count = $tab['callback'] === 'woocommerce_product_reviews_tab' ? ($product = wc_get_product() ? $product->get_review_count() : 0) : 0;
+            $tabs[$key]['title'] = sprintf( __( 'Reviews (%d)', 'luxe-fashion' ), $count );
+        }
+    }
+    return $tabs;
+}
+add_filter( 'woocommerce_product_tabs', 'luxe_custom_product_tabs', 98 );
+
+/* --- Gallery wrapper class --- */
+function luxe_gallery_wrapper_class( $html ) : string {
+    if ( is_product() ) {
+        $html = str_replace( 'class="woocommerce-product-gallery', 'class="woocommerce-product-gallery luxe-product-gallery', $html );
+    }
+    return $html;
+}
+add_filter( 'woocommerce_single_product_image_thumbnail_html', 'luxe_gallery_wrapper_class', 10, 1 );
+
+add_action( 'woocommerce_archive_description', 'luxe_archive_description' );
