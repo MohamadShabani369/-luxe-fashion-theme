@@ -1,51 +1,55 @@
 /**
  * Luxe Fashion - Mini Cart slide-in panel
  * Vanilla JS, no dependencies.
+ *
+ * NOTE: after an AJAX add-to-cart, WooCommerce's wc-cart-fragments.js
+ * replaces #mini-cart with a brand new element (see luxe_cart_fragments()
+ * in inc/woocommerce.php), which would silently detach any listeners bound
+ * directly to the old node. Everything below is delegated from `document`
+ * so it keeps working after that swap, and the panel opens automatically
+ * whenever something is really added to the cart.
  */
 
 (function () {
     'use strict';
 
-    function init() {
-        var cartBtn = document.querySelector('.header-actions .cart');
+    function openCart() {
         var panel = document.getElementById('mini-cart');
+        if (!panel) return;
+        panel.classList.add('is-open');
+        document.body.classList.add('luxe-no-scroll');
+    }
 
-        if (!cartBtn || !panel) {
-            console.warn('Luxe: cart button or mini-cart panel not found');
+    function closeCart() {
+        var panel = document.getElementById('mini-cart');
+        if (!panel) return;
+        panel.classList.remove('is-open');
+        document.body.classList.remove('luxe-no-scroll');
+    }
+
+    document.addEventListener('click', function (e) {
+        if (e.target.closest('.header-actions .cart')) {
+            e.preventDefault();
+            openCart();
             return;
         }
-
-        var closeBtn = panel.querySelector('.mini-cart-close');
-        var backdrop = panel.querySelector('.mini-cart-backdrop');
-        var overlay = panel.querySelector('.mini-cart-overlay');
-
-        function openCart(e) {
-            if (e) e.preventDefault();
-            panel.classList.add('is-open');
-            document.body.classList.add('luxe-no-scroll');
+        if (e.target.closest('#mini-cart .mini-cart-close') ||
+            e.target.closest('#mini-cart .mini-cart-backdrop') ||
+            e.target.closest('#mini-cart .mini-cart-overlay')) {
+            closeCart();
         }
+    });
 
-        function closeCart() {
-            panel.classList.remove('is-open');
-            document.body.classList.remove('luxe-no-scroll');
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' || e.keyCode === 27) {
+            closeCart();
         }
+    });
 
-        cartBtn.addEventListener('click', openCart);
-
-        if (closeBtn) closeBtn.addEventListener('click', closeCart);
-        if (backdrop) backdrop.addEventListener('click', closeCart);
-        if (overlay) overlay.addEventListener('click', closeCart);
-
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' || e.keyCode === 27) {
-                closeCart();
-            }
-        });
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-    } else {
-        init();
-    }
+    // Open the panel as soon as a product is really added to the cart, so
+    // the person gets an immediate, truthful confirmation instead of a
+    // silent count change they might not notice.
+    document.body.addEventListener('added_to_cart', function () {
+        openCart();
+    });
 })();

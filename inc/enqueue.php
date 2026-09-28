@@ -168,6 +168,15 @@ function luxe_enqueue_assets() : void {
 		);
 	}
 
+	// Cart interactions (AJAX add-to-cart, quantity, mini-cart refresh).
+	wp_enqueue_script(
+		'luxe-cart',
+		LUXE_ASSET_URI . '/js/cart.js',
+		[],
+		$version,
+		true
+	);
+
 	// --- Conditional: Single product assets ---
 	if ( is_product() ) {
 		wp_enqueue_style(

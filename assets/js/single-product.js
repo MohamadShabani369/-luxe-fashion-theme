@@ -54,6 +54,18 @@
         const priceEl = document.querySelector('.price');
         if (titleEl) sticky.querySelector('.sticky-title').textContent = titleEl.textContent.trim();
         if (priceEl) sticky.querySelector('.sticky-price').textContent = priceEl.textContent.trim();
+        // The sticky button had no click handler at all, so tapping it did
+        // nothing. Forward the click to the real add-to-cart button so it
+        // goes through WooCommerce's normal add-to-cart flow (works for
+        // simple and variable products alike).
+        const stickyBtn = sticky.querySelector('.sticky-cart-btn');
+        if (stickyBtn) {
+            stickyBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const liveBtn = document.querySelector('.single_add_to_cart_button');
+                if (liveBtn) liveBtn.click();
+            });
+        }
         const observer = new IntersectionObserver(function(entries) {
             entries.forEach(e => {
                 sticky.classList.toggle('visible', !e.isIntersecting);

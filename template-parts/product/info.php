@@ -30,7 +30,19 @@ $sale = $product->is_on_sale();
     </div>
     <hr class="divider" />
     <div class="add-to-cart-area">
-        <?php wc_get_template( 'single-product/add-to-cart/simple.php' ); ?>
+        <?php
+        /**
+         * IMPORTANT: use WooCommerce's own dispatcher instead of forcing the
+         * "simple" template on every product. This was the main bug behind
+         * items not really reaching the cart: it picks the right template
+         * (simple / variable / grouped / external) based on $product->get_type(),
+         * and — critically for variable products — it also prints the
+         * surrounding <form> tag with the data-product_variations attribute
+         * and enqueues wc-add-to-cart-variation.js, none of which happen when
+         * add-to-cart/simple.php is included directly.
+         */
+        woocommerce_template_single_add_to_cart();
+        ?>
     </div>
     <a href="#" class="wishlist-link" aria-label="Add to wishlist">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
